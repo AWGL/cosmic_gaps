@@ -1,0 +1,24 @@
+Colorectal:
+  primary_site_list:
+    - 'large_intestine'
+  gene_list:
+    - 'BRAF'
+    - 'KRAS'
+    - 'NRAS'
+Lung:
+  primary_site_list:
+    - 'lung'
+  gene_list:
+    - 'EGFR'
+Skin:
+  primary_site_list:
+    - 'skin'
+  gene_list:
+    - 'BRAF'
+    - 'KIT'
+GIST:
+  primary_site_list:
+    - 'soft_tissue'
+  gene_list:
+    - 'KIT'
+    - 'PDGFRA'
