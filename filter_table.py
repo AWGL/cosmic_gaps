@@ -30,12 +30,13 @@ def filter_table(sampleId, referral, gaps_path, bedfile_path, referral_list):
     #load file
     original_gaps_file = pandas.read_csv(gaps_path+sampleId+"_"+referral+"_hotspots.gaps", sep='\t', names=['Chr','Start', 'End', 'Info'])
 
+    # only run loop when referral is in the referral list and the length of the gaps file is greater than 0
     if ((referral in referral_list) and (original_gaps_file.shape[0]!=0)):
 
-        file = pandas.read_csv(gaps_path+sampleId+"_"+referral+"_intersect.txt", sep = '\t', names = ['Chr','Start', 'End', 'Info', 'Chr_cosmic','Start_cosmic', 'End_cosmic', '7', '8','9', '10', 'Counts'])
+        file = pandas.read_csv(gaps_path+sampleId+"_"+referral+"_intersect.txt", sep = '\t', names = ['Chr','Start', 'End', 'Info', 'Chr_cosmic','Start_cosmic', 'End_cosmic', '7', '8','9', '10', 'Counts', 'Overlap'])
 
-        #For regions where there is no overlap (start_cosmic value is -1), make Counts value 0
-        file['Counts'] = numpy.where(file['Start_cosmic'] == -1, 0, file['Counts'])
+        #For regions where there is no overlap make Counts value 0
+        file['Counts'] = numpy.where(file['Overlap'] == 0, 0, file['Counts'])
 
         #only keep certain columns
         file[['Gene','Ignore']] = file.Info.str.split("(",expand=True,)
