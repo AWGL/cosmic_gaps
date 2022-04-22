@@ -84,7 +84,8 @@ class test_filter_raw_data(unittest.TestCase):
 
         referral_file=filter_by_referral(df, config)
 
-        print(referral_file)
+        
+        #check it only filters the lung EGFR rows
 
         Lung_unsorted=pandas.read_csv("Lung.csv")
 
