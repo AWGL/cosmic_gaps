@@ -69,7 +69,9 @@ def filter_by_referral(df, config):
         site_list = config[referral]['primary_site_list']
 
         # filter dataframe and add column concatenating gene name and HGVS
+
         filtered_df = df[ (df.GENE_NAME.isin(gene_list)) & (df.PRIMARY_SITE.isin(site_list)) ]
+
         filtered_df['GENE_AND_HGVS'] = filtered_df.apply(lambda x: concat_gene(x), axis=1)
 
         # count based on concatenated gene and HGVS column, turn outputed series back into a dataframe
@@ -94,6 +96,8 @@ def filter_by_referral(df, config):
             index=False,
             columns=['CHR', 'START', 'END', 'GENE_NAME', 'HGVS_C', 'HGVS_P', 'HGVS_G', 'COUNT']
         )
+
+
 
 
 def concat_gene(x):

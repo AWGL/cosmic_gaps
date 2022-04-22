@@ -159,7 +159,7 @@ class test_filter_raw_data(unittest.TestCase):
         self.assertEqual(count,[1, 1])
 
 
-
+        #check the counts get added for overlapping regions
 
         colorectal_unsorted=pandas.read_csv("Colorectal.csv")
 
@@ -173,12 +173,12 @@ class test_filter_raw_data(unittest.TestCase):
         hgvs_g=list(colorectal["HGVS_G"])
         count=list(colorectal["COUNT"])
 
-        self.assertEqual(chr,[4,5,6,8])
-        self.assertEqual(start,[5896741, 5896741, 5896743, 5896745])
-        self.assertEqual(end,[5896742, 5896742, 5896744, 5896746])
-        self.assertEqual(gene_name,["BRAF", "BRAF", "KRAS", "NRAS"])
-        self.assertEqual(hgvs_c,["HGVSC", "HGVSC", "HGVSC", "HGVSC"])
-        self.assertEqual(hgvs_p,["HGVSP", "HGVSP", "HGVSP", "HGVSP"])
-        self.assertEqual(hgvs_g,["4:g.5896742C>T", "5:g.5896742C>T", "6:g.5896744C>T", "8:g.5896746C>T"])
-        self.assertEqual(count,[1, 1, 1, 1])
+        self.assertEqual(chr,[5,6,8])
+        self.assertEqual(start,[5896741, 5896743, 5896745])
+        self.assertEqual(end,[5896742, 5896744, 5896746])
+        self.assertEqual(gene_name,["BRAF" ,"KRAS", "NRAS"])
+        self.assertEqual(hgvs_c,["HGVSC", "HGVSC", "HGVSC"])
+        self.assertEqual(hgvs_p,["HGVSP", "HGVSP", "HGVSP"])
+        self.assertEqual(hgvs_g,["5:g.5896742C>T", "6:g.5896744C>T", "8:g.5896746C>T"])
+        self.assertEqual(count,[2, 1, 1])
 
