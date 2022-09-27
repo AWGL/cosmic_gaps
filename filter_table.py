@@ -83,29 +83,19 @@ def filter_table(sampleId, referral, gaps_path, bedfile_path, referral_list):
 
 if __name__ == '__main__':
 
-
-    parser=argparse.ArgumentParser()
+    parser = argparse.ArgumentParser()
     parser.add_argument('--sampleId', required=True)
     parser.add_argument('--referral', required=True)
     parser.add_argument('--gaps_path', required=True)
     parser.add_argument('--bedfile_path', required=True)
-    args=parser.parse_args()
+    args = parser.parse_args()
 
-    sampleId=args.sampleId
-    referral=args.referral
-    gaps_path=args.gaps_path
-    bedfile_path=args.bedfile_path
-    referral_list=['Melanoma', 'Lung', 'Colorectal', 'GIST']
-
-
-    if (referral!= "null"):
-        filter_table(sampleId, referral, gaps_path, bedfile_path, referral_list)
+    sample_id = args.sampleId
+    referral = args.referral
+    gaps_path = args.gaps_path
+    bedfile_path = args.bedfile_path
+    referral_list = ['Melanoma', 'Lung', 'Colorectal', 'GIST', 'breast']
 
 
-
-
-
-
-
-
-
+    if referral != 'null':
+        filter_table(sample_id, referral, gaps_path, bedfile_path, referral_list)
