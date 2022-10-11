@@ -7,7 +7,7 @@ class test_filter_table(unittest.TestCase):
 
     def test_filter_table(self):
 
-        referral_list=['Melanoma', 'Lung', 'Colorectal', 'GIST']
+        referral_list=['Melanoma', 'Lung', 'Colorectal', 'GIST', 'breast']
 
 
         
@@ -166,4 +166,64 @@ class test_filter_table(unittest.TestCase):
         self.assertEqual(info[2], "gene2(hgvs_c)")
         self.assertEqual(counts[2], 7)
         self.assertEqual(percentage[2],7)
+
+
+        file=filter_table("Sample5", "breast", "./test_data/", "./test_data/", referral_list )
+
+        self.assertEqual(len(file),3)
+
+        print(file)
+
+        chr=list(file["Chr"])
+        start=list(file["Start"])
+        end=list(file["End"])
+        gene=list(file["Gene"])
+        info=list(file["Info"])
+        counts=list(file["Counts"])
+        percentage=list(file["Percentage"])
+
+        self.assertEqual(chr[0], 1)
+        self.assertEqual(start[0], 3)
+        self.assertEqual(end[0], 15)
+        self.assertEqual(gene[0], "gene1")
+        self.assertEqual(info[0], "gene1(hgvs_c)")
+        self.assertEqual(counts[0], 0)
+        self.assertEqual(percentage[0], 0.0)
+
+
+        self.assertEqual(chr[1], 1)
+        self.assertEqual(start[1], 3)
+        self.assertEqual(end[1], 15)
+        self.assertEqual(gene[1], "gene2")
+        self.assertEqual(info[1], "gene2(hgvs_c)")
+        self.assertEqual(counts[1], 21)
+        self.assertEqual(percentage[1], 16.15)
+
+
+        self.assertEqual(chr[2], 1)
+        self.assertEqual(start[2], 999)
+        self.assertEqual(end[2], 1011)
+        self.assertEqual(gene[2], "gene2")
+        self.assertEqual(info[2], "gene2(hgvs_c)")
+        self.assertEqual(counts[2], 75)
+        self.assertEqual(percentage[2],57.69)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -183,3 +183,33 @@ class test_filter_raw_data(unittest.TestCase):
         self.assertEqual(hgvs_g,["5:g.5896742C>T", "6:g.5896744C>T", "8:g.5896746C>T"])
         self.assertEqual(count,[2, 1, 1])
 
+
+
+
+        #check for the breast referral type
+
+        breast_unsorted=pandas.read_csv("Breast.csv")
+
+        breast=breast_unsorted.sort_values(by='CHR')
+        chr=list(breast["CHR"])
+        start=list(breast["START"])
+        end=list(breast["END"])
+        gene_name=list(breast["GENE_NAME"])
+        hgvs_c=list(breast["HGVS_C"])
+        hgvs_p=list(breast["HGVS_P"])
+        hgvs_g=list(breast["HGVS_G"])
+        count=list(breast["COUNT"])
+
+        self.assertEqual(chr,[18])
+        self.assertEqual(start,[5896755])
+        self.assertEqual(end,[5896756])
+        self.assertEqual(gene_name,["PIK3CA"])
+        self.assertEqual(hgvs_c,["HGVSC"])
+        self.assertEqual(hgvs_p,["HGVSP"])
+        self.assertEqual(hgvs_g,["18:g.5896756C>T"])
+        self.assertEqual(count,[1])
+
+
+
+
+
