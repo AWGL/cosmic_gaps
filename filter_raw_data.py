@@ -34,7 +34,7 @@ def prefilter_cosmic_data(cosmic_file, config):
 
     # do a crude filter for any lines containing any of the genes (essentially the same as running grep)
     filtered_dict = []
-    with open(cosmic_file, 'r') as f:
+    with open(cosmic_file, 'r', encoding='windows-1252') as f:
 
         for n, line in enumerate(f):
             # take first line as header, reformat to be all caps and only underscores for seperating words
